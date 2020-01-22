@@ -6,6 +6,8 @@ const userRouter = require('./users/userRouter');
 server.use(cors())
 server.use('/api/posts', postRouter);
 server.use('/api/users', userRouter);
+server.use(express.json())
+server.use(logger)
 
 
 server.get('/', (req, res) => {
@@ -24,8 +26,4 @@ function logger(req, res, next) {
   next();
 }
 
-server.use(logger)
-
-// module.exports = server;
-
-server.listen(8000, () => console.log('API running on port 8000'));
+module.exports = server;
