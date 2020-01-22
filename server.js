@@ -4,10 +4,11 @@ const cors = require('cors')
 const postRouter = require('./posts/postRouter');
 const userRouter = require('./users/userRouter');
 server.use(cors())
-server.use('/api/posts', postRouter);
-server.use('/api/users', userRouter);
 server.use(express.json())
 server.use(logger)
+server.use('/api/posts', postRouter);
+server.use('/api/users', userRouter);
+
 
 
 server.get('/', (req, res) => {
@@ -19,7 +20,7 @@ server.get('/', (req, res) => {
 function logger(req, res, next) {
   console.log(
     `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.get(
-      'Origin'
+      'origin'
     )}`
   );
 
